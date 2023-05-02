@@ -1,0 +1,19 @@
+- name: Install packages npm for react app
+  npm:
+    path: /{{path_frontend_project}}
+
+# TODO -> Voir pourquoi on a besoin de lancer le backend en async et poll à 0
+- name: Start the application react
+  command:
+    chdir: /{{path_frontend_project}}
+    # TODO: change cmd to npm run build
+    cmd: sudo npm run dev
+  async: 1300
+  poll: 0
+
+
+- name: Display all ports in use on the server
+  shell: sudo netstat -tlnp
+  register: app_status
+  async: 1700
+- debug: msg={{app_status.stdout_lines}}

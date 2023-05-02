@@ -1,0 +1,22 @@
+- name: Deploy
+  hosts: server_web
+  roles:
+    - init_deploy
+
+
+- name: MariaDB deployement
+  hosts: server_web
+  roles:
+    - mariadb
+
+
+- name: Nodejs deployement
+  hosts: server_web
+  roles:
+    - nodejs
+
+
+- name: React deployement
+  hosts: server_web
+  roles:
+    - react

@@ -1,0 +1,6 @@
+mysql_user_name: root
+mysql_user_password: test
+database_name: test
+mysql_host: localhost
+mysql_port: 3306
+database_import_file: home/marius/final_project/backend/discord_bot.sql

@@ -1,0 +1,11 @@
+- name: Install packages npm for server nodejs
+  npm:
+    path: /{{path_backend_project}}
+
+# TODO ->  Voir pourquoi on a besoin de lancer le backend en async et poll à 0
+- name: Start server nodejs
+  command:
+    chdir: /{{path_backend_project}}
+    cmd: npm start
+  async: 1000
+  poll: 0

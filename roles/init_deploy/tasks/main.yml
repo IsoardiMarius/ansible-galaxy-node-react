@@ -1,0 +1,27 @@
+- name: Update apt repo and cache
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+- name: Install curl
+  apt:
+    pkg:
+      - curl
+
+- name: Install git
+  apt: name=git state=present
+
+- name: Get nodejs repo
+  shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+
+- name: Install nodejs and npm
+  apt:
+    pkg:
+      - nodejs
+
+- name: Clone project from GitHub
+  git:
+    repo: "{{project_git_url}}"
+    dest: /{{path_where_clone_project}}
+    version: main
+    recursive: true
+    clone: yes
+
